@@ -89,6 +89,7 @@ namespace NuevosComponentes
                 return lbl.Text;
             }
         }
+
         [Category("Mis Propiedades")]
         [Description("Texto asociado al TextBox del control")]
         public string TextTxt
@@ -190,29 +191,23 @@ namespace NuevosComponentes
         }
 
 
-        private string pswChr = "";
         [Category("Mis Propiedades")] 
         [Description("Caracter de contraseña")]
 
-        public string PswChr
+        public char PswChr
         {
             set
-            {
-                if (value == "")
-                {
-                    pswChr = value;
-                } else
-                {
-                    pswChr = value;
-                    txt.PasswordChar = char.Parse(pswChr);
-                }
+           {
+
+
+                txt.PasswordChar = value;
                 
                 
             }
 
             get
             {
-                return pswChr;
+                return txt.PasswordChar;
             }
         }
 

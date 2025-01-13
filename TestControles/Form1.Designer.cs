@@ -30,8 +30,8 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.labelTextBox1 = new NuevosComponentes.LabelTextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.labelTextBox1 = new NuevosComponentes.LabelTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -54,23 +54,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // labelTextBox1
-            // 
-            this.labelTextBox1.Location = new System.Drawing.Point(100, 71);
-            this.labelTextBox1.Name = "labelTextBox1";
-            this.labelTextBox1.Posicion = NuevosComponentes.LabelTextBox.EPosicion.DERECHA;
-            this.labelTextBox1.PswChr = "*";
-            this.labelTextBox1.Separacion = 30;
-            this.labelTextBox1.Size = new System.Drawing.Size(165, 20);
-            this.labelTextBox1.TabIndex = 0;
-            this.labelTextBox1.TextLbl = "label1";
-            this.labelTextBox1.TextTxt = "";
-            this.labelTextBox1.PosicionChanged += new System.EventHandler(this.labelTextBox1_PosicionChanged);
-            this.labelTextBox1.SeparacionChanged += new System.EventHandler(this.labelTextBox1_SeparacionChanged);
-            this.labelTextBox1.TxtChanged += new System.EventHandler(this.labelTextBox1_TxtChanged);
-            this.labelTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.labelTextBox1_KeyPress);
-            this.labelTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.labelTextBox1_KeyUp);
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(170, 244);
@@ -81,15 +64,27 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // labelTextBox1
+            // 
+            this.labelTextBox1.Location = new System.Drawing.Point(170, 70);
+            this.labelTextBox1.Name = "labelTextBox1";
+            this.labelTextBox1.Posicion = NuevosComponentes.LabelTextBox.EPosicion.IZQUIERDA;
+            this.labelTextBox1.PswChr = 'a';
+            this.labelTextBox1.Separacion = 30;
+            this.labelTextBox1.Size = new System.Drawing.Size(165, 20);
+            this.labelTextBox1.TabIndex = 4;
+            this.labelTextBox1.TextLbl = "label1";
+            this.labelTextBox1.TextTxt = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelTextBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.labelTextBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
@@ -98,11 +93,10 @@
         }
 
         #endregion
-
-        private NuevosComponentes.LabelTextBox labelTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private NuevosComponentes.LabelTextBox labelTextBox1;
     }
 }
 
