@@ -211,14 +211,35 @@ namespace NuevosComponentes
             }
         }
 
+        private bool subrayado;
+        [Category("Mis Propiedades")]
+        [Description("Caracter de contraseña")]
+
+        public bool Subrayado
+        {
+            set
+            {
+                subrayado = value;
+            }
+
+            get
+            {
+                return subrayado;
+            }
+        }
+
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             recolocar();
-            e.Graphics.DrawLine(new Pen(Color.Violet),
-            lbl.Left, this.Height - 1,
-            lbl.Left + lbl.Width, this.Height - 1);
+            if (subrayado == true)
+            {
+                e.Graphics.DrawLine(new Pen(Color.Black),
+                lbl.Left, this.Height - 1,
+                lbl.Left + lbl.Width, this.Height - 1);
+            }
+            
         }
     }
 

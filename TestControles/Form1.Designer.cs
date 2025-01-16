@@ -30,7 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.etiquetaAviso1 = new NuevosComponentes.EtiquetaAviso();
             this.labelTextBox1 = new NuevosComponentes.LabelTextBox();
             this.SuspendLayout();
             // 
@@ -54,15 +54,17 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // etiquetaAviso1
             // 
-            this.button3.Location = new System.Drawing.Point(170, 244);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.etiquetaAviso1.ColorFinal = 100;
+            this.etiquetaAviso1.ColorInicial = 22;
+            this.etiquetaAviso1.Gradiente = true;
+            this.etiquetaAviso1.Location = new System.Drawing.Point(170, 143);
+            this.etiquetaAviso1.Marca = NuevosComponentes.EtiquetaAviso.EMarca.Circulo;
+            this.etiquetaAviso1.Name = "etiquetaAviso1";
+            this.etiquetaAviso1.Size = new System.Drawing.Size(131, 53);
+            this.etiquetaAviso1.TabIndex = 5;
+            this.etiquetaAviso1.Text = "etiquetaAviso1";
             // 
             // labelTextBox1
             // 
@@ -72,6 +74,7 @@
             this.labelTextBox1.PswChr = 'a';
             this.labelTextBox1.Separacion = 30;
             this.labelTextBox1.Size = new System.Drawing.Size(165, 20);
+            this.labelTextBox1.Subrayado = true;
             this.labelTextBox1.TabIndex = 4;
             this.labelTextBox1.TextLbl = "label1";
             this.labelTextBox1.TextTxt = "";
@@ -81,8 +84,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.etiquetaAviso1);
             this.Controls.Add(this.labelTextBox1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -95,8 +98,8 @@
         #endregion
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private NuevosComponentes.LabelTextBox labelTextBox1;
+        private NuevosComponentes.EtiquetaAviso etiquetaAviso1;
     }
 }
 

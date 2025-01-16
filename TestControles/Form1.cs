@@ -81,26 +81,20 @@ namespace TestControles
 ;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            flag = !flag;
-            this.Refresh();
-        }
-        bool flag = true;
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            if (flag)
-            {
-                e.Graphics.DrawString("Prueba de escrituta", this.Font, Brushes.BlueViolet, 10, 10);
+            
+            
+                //e.Graphics.DrawString("Prueba de escrituta", this.Font, Brushes.BlueViolet, 10, 10);
 
-                e.Graphics.DrawLine(new Pen(Color.Green), 10, 10, 100, 100);
+                //e.Graphics.DrawLine(new Pen(Color.Green), 10, 10, 100, 100);
 
-                Graphics gr = this.CreateGraphics();
+                
               
-                gr.DrawImage(new Bitmap(@"C:\Windows\Web\Wallpaper\Theme2\img7.jpg"), 10, 30);
-            }
+                
+            
  
 
         }
