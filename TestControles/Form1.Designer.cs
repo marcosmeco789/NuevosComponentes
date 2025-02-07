@@ -1,4 +1,6 @@
-﻿namespace TestControles
+﻿using System.Drawing;
+
+namespace TestControles
 {
     partial class Form1
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.etiquetaAviso1 = new NuevosComponentes.EtiquetaAviso();
@@ -56,13 +59,14 @@
             // 
             // etiquetaAviso1
             // 
-            this.etiquetaAviso1.ColorFinal = 100;
-            this.etiquetaAviso1.ColorInicial = 22;
+            this.etiquetaAviso1.ColorFinal = System.Drawing.Color.Linen;
+            this.etiquetaAviso1.ColorInicial = System.Drawing.Color.Green;
             this.etiquetaAviso1.Gradiente = true;
+            this.etiquetaAviso1.ImagenMarca = ((System.Drawing.Image)(resources.GetObject("etiquetaAviso1.ImagenMarca")));
             this.etiquetaAviso1.Location = new System.Drawing.Point(170, 143);
-            this.etiquetaAviso1.Marca = NuevosComponentes.EtiquetaAviso.EMarca.Circulo;
+            this.etiquetaAviso1.Marca = NuevosComponentes.EtiquetaAviso.EMarca.Imagen;
             this.etiquetaAviso1.Name = "etiquetaAviso1";
-            this.etiquetaAviso1.Size = new System.Drawing.Size(131, 53);
+            this.etiquetaAviso1.Size = new System.Drawing.Size(78, 13);
             this.etiquetaAviso1.TabIndex = 5;
             this.etiquetaAviso1.Text = "etiquetaAviso1";
             // 

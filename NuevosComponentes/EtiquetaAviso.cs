@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace NuevosComponentes
         {
             Nada,
             Cruz,
-            Circulo
+            Circulo,
+            Imagen
         }
 
 
@@ -29,6 +31,20 @@ namespace NuevosComponentes
         {
             base.OnPaint(e);
             Graphics g = e.Graphics;
+
+            if (Gradiente)
+            {
+                using (LinearGradientBrush lg = new LinearGradientBrush(new Point(0, 0), new Point(this.Width, 0), ColorInicial, ColorFinal))
+                {
+                    e.Graphics.FillRectangle(lg, this.ClientRectangle);
+                }
+
+            }
+            else
+            {
+                g.Clear(this.BackColor);
+            }
+
             int grosor = 0; //Grosor de las líneas de dibujo
             int offsetX = 0; //Desplazamiento a la derecha del texto
             int offsetY = 0; //Desplazamiento hacia abajo del texto
@@ -58,6 +74,11 @@ namespace NuevosComponentes
                     //Es recomendable liberar recursos de dibujo pues se
                     //pueden realizar muchos y cogen memoria
                     lapiz.Dispose();
+                    break;
+
+                case EMarca.Imagen:
+                    
+                    g.DrawImage(ImagenMarca,0,0,FontHeight^2,FontHeight^2);
                     break;
             }
             //Finalmente pintamos el Texto; desplazado si fuera necesario
@@ -91,60 +112,31 @@ namespace NuevosComponentes
             }
         }
 
-        private bool gradiente;
+
         [Category("Appearance")]
         [Description("Activa o desactiva el fondo")]
 
         public bool Gradiente { set; get; }
 
 
-        private int colorInicial;
         [Category("Appearance")]
         [Description("Color inicial")]
 
-        public int ColorInicial
-        {
-
-            set
-            {
-
-                colorInicial = value;
-
-            }
-
-            get
-            {
-             
-                    return colorInicial;
-
-                
-            }
-
-        }
+        public Color ColorInicial { set; get; }
 
 
-
-        private int colorFinal;
         [Category("Appearance")]
         [Description("Color inicial")]
 
-        public int ColorFinal
-        {
+        public Color ColorFinal{ set; get; }
 
-            set
-            {
-               
-                    colorFinal = value;
 
-                
-            }
+        [Category("Appearance")]
+        [Description("imagen a mostrar")]
 
-            get
-            {
-                return colorFinal;
-            }
+        public Image ImagenMarca{ set; get; }
 
-        }
+
 
 
 

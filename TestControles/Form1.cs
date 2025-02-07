@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,17 +86,18 @@ namespace TestControles
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            
-            
-                //e.Graphics.DrawString("Prueba de escrituta", this.Font, Brushes.BlueViolet, 10, 10);
 
-                //e.Graphics.DrawLine(new Pen(Color.Green), 10, 10, 100, 100);
 
-                
-              
-                
+            //e.Graphics.DrawString("Prueba de escrituta", this.Font, Brushes.BlueViolet, 10, 10);
+
+            //e.Graphics.DrawLine(new Pen(Color.Green), 10, 10, 100, 100);
             
- 
+
+
+
+
+
+
 
         }
 
