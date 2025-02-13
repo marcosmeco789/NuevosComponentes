@@ -12,14 +12,17 @@ namespace ComponenteEj3
 {
     public partial class PlayPause : UserControl
     {
-        public string[] tiempoSplit;
-        
+        private int ss;
+        private int mm;
+        private string[] tiempoSplit;
+
         public PlayPause()
         {
             InitializeComponent();
+            tiempoSplit = lblTimer.Text.Split(':');
+            MM = int.Parse(tiempoSplit[0]);
+            SS = int.Parse(tiempoSplit[1]);
         }
-
-
 
         [Category("Appearance")]
         [Description("Se lanza al hacer click en el boton")]
@@ -34,45 +37,76 @@ namespace ComponenteEj3
             if (btnPlay.Text == "|>")
             {
                 btnPlay.Text = "||";
-                
-            } else
+            }
+            else
             {
                 btnPlay.Text = "|>";
             }
             OnPlayClick(e);
         }
 
-
         [Category("Appearance")]
-        [Description("Se lanza cuando label sobrepasa los 59")]
+        [Description("Se lanza cuando SS sobrepasa los 59")]
         public event EventHandler DesbordaTiempo;
         protected virtual void OnDesbordaTiempo(EventArgs e)
         {
             DesbordaTiempo?.Invoke(this, e);
         }
 
+        public int SS
+        {
+            get { return ss; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("El tiempo no puede ser negativo.");
+                }
+                if (value > 59)
+                {
+                    ss = value % 60;
+                    OnDesbordaTiempo(EventArgs.Empty);
+                }
+                else
+                {
+                    ss = value;
+                }
+                UpdateLabel();
+            }
+        }
+
+        public int MM
+        {
+            get { return mm; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("El tiempo no puede ser negativo.");
+                }
+                if (value > 59)
+                {
+                    mm = 0;
+                }
+                else
+                {
+                    mm = value;
+                }
+                UpdateLabel();
+            }
+        }
+
+        private void UpdateLabel()
+        {
+            lblTimer.Text = $"{MM:D2}:{SS:D2}";
+        }
+
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
-             tiempoSplit = lblTimer.Text.Split(':');
-
-            if (int.Parse(tiempoSplit[1]) > 59)
-            {
-                tiempoSplit[1] = 00.ToString();
-                OnDesbordaTiempo(e);
-            }
-
-            if (int.Parse(tiempoSplit[0]) > 59)
-            {
-                tiempoSplit[0] = 00.ToString();
-            }
-            if (int.Parse(tiempoSplit[0]) < 0 || int.Parse(tiempoSplit[1]) < 0)
-            {
-                throw new ArgumentException("El tiempo no puede ser negativo.");
-            }
-
-
+            tiempoSplit = lblTimer.Text.Split(':');
+            MM = int.Parse(tiempoSplit[0]);
+            SS = int.Parse(tiempoSplit[1]);
         }
-
     }
 }

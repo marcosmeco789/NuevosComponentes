@@ -61,6 +61,7 @@
             this.playPause1.Name = "playPause1";
             this.playPause1.Size = new System.Drawing.Size(185, 59);
             this.playPause1.TabIndex = 2;
+            this.playPause1.PlayClick += new System.EventHandler(this.playPause1_PlayClick);
             this.playPause1.DesbordaTiempo += new System.EventHandler(this.playPause1_DesbordaTiempo);
             // 
             // comboBox1
@@ -85,7 +86,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnDirectorio);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Ej3";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
