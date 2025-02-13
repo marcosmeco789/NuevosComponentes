@@ -92,14 +92,11 @@ namespace TestControles
 
             //e.Graphics.DrawLine(new Pen(Color.Green), 10, 10, 100, 100);
             
-
-
-
-
-
-
-
         }
 
+        private void etiquetaAviso1_ClickEnMarca(object sender, EventArgs e)
+        {
+            Console.WriteLine("EVENTO!!!");
+        }
     }
 }

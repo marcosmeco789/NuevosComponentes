@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//Revisar refresh
 namespace NuevosComponentes
 {
     public partial class LabelTextBox : UserControl
@@ -220,6 +220,7 @@ namespace NuevosComponentes
             set
             {
                 subrayado = value;
+                this.Refresh();
             }
 
             get
@@ -233,7 +234,7 @@ namespace NuevosComponentes
         {
             base.OnPaint(e);
             recolocar();
-            if (subrayado == true)
+            if (subrayado)
             {
                 e.Graphics.DrawLine(new Pen(Color.Black),
                 lbl.Left, this.Height - 1,

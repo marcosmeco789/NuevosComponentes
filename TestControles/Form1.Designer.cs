@@ -30,7 +30,6 @@ namespace TestControles
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.etiquetaAviso1 = new NuevosComponentes.EtiquetaAviso();
@@ -59,22 +58,24 @@ namespace TestControles
             // 
             // etiquetaAviso1
             // 
-            this.etiquetaAviso1.ColorFinal = System.Drawing.Color.Linen;
-            this.etiquetaAviso1.ColorInicial = System.Drawing.Color.Green;
+            this.etiquetaAviso1.ColorFinal = System.Drawing.Color.Salmon;
+            this.etiquetaAviso1.ColorInicial = System.Drawing.Color.LightGoldenrodYellow;
+            this.etiquetaAviso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.etiquetaAviso1.Gradiente = true;
-            this.etiquetaAviso1.ImagenMarca = ((System.Drawing.Image)(resources.GetObject("etiquetaAviso1.ImagenMarca")));
-            this.etiquetaAviso1.Location = new System.Drawing.Point(170, 143);
-            this.etiquetaAviso1.Marca = NuevosComponentes.EtiquetaAviso.EMarca.Imagen;
+            this.etiquetaAviso1.ImagenMarca = global::TestControles.Properties.Resources._360_LE_upscale_balanced_x4;
+            this.etiquetaAviso1.Location = new System.Drawing.Point(220, 187);
+            this.etiquetaAviso1.Marca = NuevosComponentes.EtiquetaAviso.EMarca.Cruz;
             this.etiquetaAviso1.Name = "etiquetaAviso1";
-            this.etiquetaAviso1.Size = new System.Drawing.Size(78, 13);
+            this.etiquetaAviso1.Size = new System.Drawing.Size(214, 62);
             this.etiquetaAviso1.TabIndex = 5;
-            this.etiquetaAviso1.Text = "etiquetaAviso1";
+            this.etiquetaAviso1.Text = "aaaaa";
+            this.etiquetaAviso1.ClickEnMarca += new System.EventHandler(this.etiquetaAviso1_ClickEnMarca);
             // 
             // labelTextBox1
             // 
             this.labelTextBox1.Location = new System.Drawing.Point(170, 70);
             this.labelTextBox1.Name = "labelTextBox1";
-            this.labelTextBox1.Posicion = NuevosComponentes.LabelTextBox.EPosicion.IZQUIERDA;
+            this.labelTextBox1.Posicion = NuevosComponentes.LabelTextBox.EPosicion.DERECHA;
             this.labelTextBox1.PswChr = 'a';
             this.labelTextBox1.Separacion = 30;
             this.labelTextBox1.Size = new System.Drawing.Size(165, 20);

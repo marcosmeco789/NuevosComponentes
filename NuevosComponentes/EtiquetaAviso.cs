@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace NuevosComponentes
 {
-    public partial class EtiquetaAviso : Control
+    public partial class EtiquetaAviso : Control//Revisar refresh. Epec click
     {
         public enum EMarca
         {
@@ -20,6 +20,8 @@ namespace NuevosComponentes
             Circulo,
             Imagen
         }
+
+        public Rectangle rectImagen;
 
 
         public EtiquetaAviso()
@@ -61,14 +63,17 @@ namespace NuevosComponentes
                     grosor = 20;
                     g.DrawEllipse(new Pen(Color.Green, grosor), grosor, grosor,
                     h, h);
+                    rectImagen = new Rectangle(grosor-FontHeight/2, grosor-FontHeight/2, FontHeight*2, FontHeight*2);
                     offsetX = h + grosor;
                     offsetY = grosor;
+                    
                     break;
                 case EMarca.Cruz:
                     grosor = 3;
                     Pen lapiz = new Pen(Color.Red, grosor);
                     g.DrawLine(lapiz, grosor, grosor, h, h);
                     g.DrawLine(lapiz, h, grosor, grosor, h);
+                    rectImagen = new Rectangle(grosor, grosor, FontHeight, FontHeight);
                     offsetX = h + grosor;
                     offsetY = grosor / 2;
                     //Es recomendable liberar recursos de dibujo pues se
@@ -77,8 +82,16 @@ namespace NuevosComponentes
                     break;
 
                 case EMarca.Imagen:
-                    
-                    g.DrawImage(ImagenMarca,0,0,FontHeight^2,FontHeight^2);
+                    if (ImagenMarca != null)
+                    {
+                        grosor = 4;
+                        g.DrawImage(ImagenMarca, new Rectangle(grosor, grosor, FontHeight, FontHeight));
+                        rectImagen = new Rectangle(grosor, grosor, FontHeight, FontHeight);
+                        offsetX = FontHeight + grosor;
+                        offsetY = grosor;
+
+
+                    }
                     break;
             }
             //Finalmente pintamos el Texto; desplazado si fuera necesario
@@ -113,28 +126,85 @@ namespace NuevosComponentes
         }
 
 
+        private bool gradiente;
         [Category("Appearance")]
         [Description("Activa o desactiva el fondo")]
+        public bool Gradiente
+        {
+            get
+            {
+                return gradiente;
+            }
+            set
+            {
+                gradiente = value;
+                this.Refresh();
+            }
+        }
 
-        public bool Gradiente { set; get; }
 
-
+        private Color colorInicial;
         [Category("Appearance")]
         [Description("Color inicial")]
+        public Color ColorInicial
+        {
+            get
+            {
+                return colorInicial;
+            }
+            set
+            {
+                colorInicial = value;
+                this.Refresh();
+            }
+        }
 
-        public Color ColorInicial { set; get; }
 
-
+        private Color colorFinal;
         [Category("Appearance")]
-        [Description("Color inicial")]
-
-        public Color ColorFinal{ set; get; }
+        [Description("Color final")]
+        public Color ColorFinal
+        {
+            get
+            {
+                return colorFinal;
+            }
+            set
+            {
+                colorFinal = value;
+                this.Refresh();
+            }
+        }
 
 
         [Category("Appearance")]
         [Description("imagen a mostrar")]
 
-        public Image ImagenMarca{ set; get; }
+        public Image ImagenMarca { set; get; }
+
+        [Category("Appearance")]
+        [Description("Se lanza al hacer click en la marca")]
+        public event EventHandler ClickEnMarca;
+        protected virtual void OnClickEnMarca(EventArgs e)
+        {
+            ClickEnMarca?.Invoke(this, e);
+        }
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+
+            if (Marca != EMarca.Nada && rectImagen.Contains(e.Location))
+            {
+                OnClickEnMarca(EventArgs.Empty);
+            }
+
+
+        }
+
+
+
 
 
 
