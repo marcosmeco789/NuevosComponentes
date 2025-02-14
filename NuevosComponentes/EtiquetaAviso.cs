@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace NuevosComponentes
 {
-    public partial class EtiquetaAviso : Control//Revisar refresh. Epec click
+    public partial class EtiquetaAviso : Control
     {
         public enum EMarca
         {

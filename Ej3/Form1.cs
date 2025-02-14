@@ -15,6 +15,8 @@ namespace Ej3
     {
         List<string> imagenes = new List<string>();
         bool flag = false;
+        int intervalo = 3;
+        int numeroImagen = 0;
 
         public Form1()
         {
@@ -24,7 +26,7 @@ namespace Ej3
 
         public void iniciarComboBox()
         {
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 20; i++)
             {
                 comboBox1.Items.Add(i + 1);
             }
@@ -39,6 +41,7 @@ namespace Ej3
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
                 {
+                    imagenes.Clear();
                     string[] archivos = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.*", SearchOption.AllDirectories);
 
                     foreach (string archivo in archivos)
@@ -48,8 +51,41 @@ namespace Ej3
                             imagenes.Add(archivo);
                         }
                     }
+
+                    if (imagenes.Count>0)
+                    {
+                        lblInfo.Text = "Imagenes cargadas correctamente!";
+                    } else
+                    {
+                        lblInfo.Text = "No se encontraron imagenes!";
+                    }
                 }
             }
+
+
+        }
+
+        public void visualizarImagenes()
+        {
+
+            if (imagenes.Count != 0)
+            {
+                if (numeroImagen >= imagenes.Count)
+                {
+                    numeroImagen = 0;
+                }
+
+                pictureBox1.ImageLocation = imagenes[numeroImagen];
+                try
+                {
+                    pictureBox1.Load();
+                }
+                catch (ArgumentException)
+                {
+                   
+                }
+
+            }        
         }
 
         private void playPause1_DesbordaTiempo(object sender, EventArgs e)
@@ -61,20 +97,38 @@ namespace Ej3
         {
             timer1.Interval = 1000;
             playPause1.SS += 1;
+            intervalo--;
+
+            if (intervalo == 0)
+            {
+                intervalo = comboBox1.SelectedIndex + 1;
+                numeroImagen++;
+                visualizarImagenes();
+            }
         }
 
         private void playPause1_PlayClick(object sender, EventArgs e)
         {
-            if (flag)
+            if (imagenes.Count!=0)
             {
-                flag = false;
-                timer1.Stop();
+                if (flag)
+                {
+                    flag = false;
+                    timer1.Stop();
+                }
+                else
+                {
+                    flag = true;
+                    timer1.Start();
+                    visualizarImagenes();
+                }
             }
-            else
-            {
-                flag = true;
-                timer1.Start();
-            }
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            intervalo = comboBox1.SelectedIndex + 1;
         }
     }
 }
