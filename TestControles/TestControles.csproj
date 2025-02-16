@@ -81,6 +81,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ejercicio4\Ejercicio4.csproj">
+      <Project>{DF3115F8-90A2-4EB9-9F13-4E6F028F3925}</Project>
+      <Name>Ejercicio4</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NuevosComponentes\NuevosComponentes.csproj">
       <Project>{44ECB779-3949-434B-B5A8-8F891D7AA85C}</Project>
       <Name>NuevosComponentes</Name>

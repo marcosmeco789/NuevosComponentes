@@ -32,8 +32,10 @@ namespace TestControles
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.dibujoAhorcado1 = new Ejercicio4.DibujoAhorcado();
             this.etiquetaAviso1 = new NuevosComponentes.EtiquetaAviso();
             this.labelTextBox1 = new NuevosComponentes.LabelTextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -56,6 +58,17 @@ namespace TestControles
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // dibujoAhorcado1
+            // 
+            this.dibujoAhorcado1.Errores = 0;
+            this.dibujoAhorcado1.Location = new System.Drawing.Point(355, 198);
+            this.dibujoAhorcado1.Name = "dibujoAhorcado1";
+            this.dibujoAhorcado1.Size = new System.Drawing.Size(282, 209);
+            this.dibujoAhorcado1.TabIndex = 6;
+            this.dibujoAhorcado1.Text = "dibujoAhorcado1";
+            this.dibujoAhorcado1.CambiaError += new System.EventHandler(this.dibujoAhorcado1_CambiaError);
+            this.dibujoAhorcado1.Ahorcado += new System.EventHandler(this.dibujoAhorcado1_Ahorcado);
+            // 
             // etiquetaAviso1
             // 
             this.etiquetaAviso1.ColorFinal = System.Drawing.Color.Salmon;
@@ -63,7 +76,7 @@ namespace TestControles
             this.etiquetaAviso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.etiquetaAviso1.Gradiente = true;
             this.etiquetaAviso1.ImagenMarca = global::TestControles.Properties.Resources._360_LE_upscale_balanced_x4;
-            this.etiquetaAviso1.Location = new System.Drawing.Point(220, 187);
+            this.etiquetaAviso1.Location = new System.Drawing.Point(53, 119);
             this.etiquetaAviso1.Marca = NuevosComponentes.EtiquetaAviso.EMarca.Cruz;
             this.etiquetaAviso1.Name = "etiquetaAviso1";
             this.etiquetaAviso1.Size = new System.Drawing.Size(214, 62);
@@ -84,11 +97,23 @@ namespace TestControles
             this.labelTextBox1.TextLbl = "label1";
             this.labelTextBox1.TextTxt = "";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(677, 225);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Sumar error";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.dibujoAhorcado1);
             this.Controls.Add(this.etiquetaAviso1);
             this.Controls.Add(this.labelTextBox1);
             this.Controls.Add(this.button2);
@@ -105,6 +130,8 @@ namespace TestControles
         private System.Windows.Forms.Button button2;
         private NuevosComponentes.LabelTextBox labelTextBox1;
         private NuevosComponentes.EtiquetaAviso etiquetaAviso1;
+        private Ejercicio4.DibujoAhorcado dibujoAhorcado1;
+        private System.Windows.Forms.Button button3;
     }
 }
 

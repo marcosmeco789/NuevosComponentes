@@ -17,62 +17,127 @@ namespace Ejercicio4
             InitializeComponent();
         }
 
-        public void baseAhorcado(PaintEventArgs e)
+        public void BaseAhorcadoEnEscala(PaintEventArgs e, int escalaX, int escalaY)
         {
-            using (Pen pen = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+            using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
             {
-                e.Graphics.DrawLine(pen, 10, 230, 220, 230); // horizontal base
-                e.Graphics.DrawLine(pen, 60, 10, 60, 230); // palo base
-                e.Graphics.DrawLine(pen, 150, 10, 59, 10); // horizontal base cabeza
-                e.Graphics.DrawLine(pen, 149, 10, 149, 50); // vertical base cabeza
+                lineaEnEscala(e, lapiz, 10, 230, 220, 230, escalaX, escalaY); // horizontal base
+                lineaEnEscala(e, lapiz, 60, 10, 60, 230, escalaX, escalaY); // palo base
+                lineaEnEscala(e, lapiz, 150, 10, 59, 10, escalaX, escalaY); // horizontal base cabeza
+                lineaEnEscala(e, lapiz, 149, 10, 149, 50, escalaX, escalaY); // vertical base cabeza
             }
+        }
+
+        private void lineaEnEscala(PaintEventArgs e, Pen lapiz, int x1, int y1, int x2, int y2, int escalaX, int escalaY)
+        {
+            e.Graphics.DrawLine(lapiz, (x1 * escalaX) / 1000, (y1 * escalaY) / 1000, (x2 * escalaX) / 1000, (y2 * escalaY) / 1000);
+        }
+
+        private void circuloEnEscala(PaintEventArgs e, Pen lapiz, int x, int y, int ancho, int alto, int escalaX, int escalaY)
+        {
+            e.Graphics.DrawEllipse(lapiz, (x * escalaX) / 1000, (y * escalaY) / 1000, (ancho * escalaX) / 1000, (alto * escalaY) / 1000);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+
+            int escalaX = (this.Width * 1000) / 230;
+            int escalaY = (this.Height * 1000) / 240;
+
             switch (errores)
             {
                 case 0:
-                    baseAhorcado(e);
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
                     break;
 
-                case 1: //cabeza
-                    baseAhorcado(e);
-                    using (Pen pen = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                case 1: // cabeza
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
+                    using (Pen lapiz = new Pen(Color.Red, 3))
                     {
-                        e.Graphics.DrawEllipse(pen, 132, 50, 35, 35); // Dibuja un círculo (cabeza)
-
+                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY);
                     }
                     break;
 
-                case 2: //cuello
+                case 2: // cuello
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
+                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    {
+                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
+                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
+                    }
                     break;
 
                 case 3: // torso
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
+                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    {
+                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
+                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
+                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
+                    }
                     break;
 
-                case 4: //brazo izq
+                case 4: // brazo izq
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
+                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    {
+                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
+                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
+                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
+                        lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
+                    }
                     break;
 
                 case 5: // brazo derecho
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
+                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    {
+                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
+                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
+                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
+                        lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
+                        lineaEnEscala(e, lapiz, 149, 100, 172, 120, escalaX, escalaY); // brazo derecho
+                    }
                     break;
 
                 case 6: // pierna izq
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
+                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    {
+                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
+                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
+                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
+                        lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
+                        lineaEnEscala(e, lapiz, 149, 100, 172, 120, escalaX, escalaY); // brazo derecho
+                        lineaEnEscala(e, lapiz, 149, 150, 124, 180, escalaX, escalaY); // pierna izq
+                    }
                     break;
 
-                case 7: //pierna derecha
+                case 7: // pierna derecha
+                    BaseAhorcadoEnEscala(e, escalaX, escalaY);
+                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    {
+                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
+                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
+                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
+                        lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
+                        lineaEnEscala(e, lapiz, 149, 100, 172, 120, escalaX, escalaY); // brazo derecho
+                        lineaEnEscala(e, lapiz, 149, 150, 124, 180, escalaX, escalaY); // pierna izq
+                        lineaEnEscala(e, lapiz, 149, 150, 173, 180, escalaX, escalaY); // pierna derecha
+                    }
                     break;
 
                 default:
                     break;
             }
-
         }
 
+
+
+        private int errores;
         [Category("Appearance")]
         [Description("Indica el tipo de marca que aparece junto al texto")]
-        private int errores;
 
         public int Errores
         {
@@ -113,6 +178,5 @@ namespace Ejercicio4
         {
             Ahorcado?.Invoke(this, e);
         }
-
     }
 }

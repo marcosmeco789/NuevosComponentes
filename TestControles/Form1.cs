@@ -98,5 +98,21 @@ namespace TestControles
         {
             Console.WriteLine("EVENTO!!!");
         }
+        private void dibujoAhorcado1_CambiaError(object sender, EventArgs e)
+        {
+            Console.WriteLine("Error lanzado!");
+        }
+
+        private void dibujoAhorcado1_Ahorcado(object sender, EventArgs e)
+        {
+            Console.WriteLine("Evento ahorcado!");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dibujoAhorcado1.Errores += 1;
+        }
+
+
     }
 }
