@@ -19,9 +19,9 @@ namespace ComponenteEj3
         public PlayPause()
         {
             InitializeComponent();
-            tiempoSplit = lblTimer.Text.Split(':');
-            MM = int.Parse(tiempoSplit[0]);
-            SS = int.Parse(tiempoSplit[1]);
+          //  tiempoSplit = lblTimer.Text.Split(':');
+            MM = 0;// int.Parse(tiempoSplit[0]);
+            SS = 0;// int.Parse(tiempoSplit[1]);
         }
 
         [Category("Appearance")]
@@ -43,6 +43,19 @@ namespace ComponenteEj3
                 btnPlay.Text = "|>";
             }
             OnPlayClick(e);
+        }
+
+        public string BotonPlay
+        {
+            set
+            {
+                btnPlay.Text = value;
+            }
+
+            get
+            {
+                return btnPlay.Text;
+            }
         }
 
         [Category("Appearance")]

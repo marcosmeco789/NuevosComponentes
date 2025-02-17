@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Ej3
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form// CB no editable. limpiar imagen si dir vacio. gestion boton.
     {
         List<string> imagenes = new List<string>();
         bool flag = false;
@@ -35,38 +35,46 @@ namespace Ej3
 
         private void btnDirectorio_Click(object sender, EventArgs e)
         {
-            using (var folderBrowserDialog = new FolderBrowserDialog())
+            if (playPause1.BotonPlay=="|>")
             {
-                DialogResult result = folderBrowserDialog.ShowDialog();
-
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+                using (var folderBrowserDialog = new FolderBrowserDialog())
                 {
-                    imagenes.Clear();
-                    string[] archivos = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.*", SearchOption.AllDirectories);
+                    DialogResult result = folderBrowserDialog.ShowDialog();
 
-                    foreach (string archivo in archivos)
+                    if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
                     {
-                        if (archivo.EndsWith(".png") || archivo.EndsWith(".jpg"))
+                        imagenes.Clear();
+                        string[] archivos = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.*", SearchOption.AllDirectories);
+
+                        foreach (string archivo in archivos)
                         {
-                            imagenes.Add(archivo);
+                            if (archivo.EndsWith(".png") || archivo.EndsWith(".jpg"))
+                            {
+                                imagenes.Add(archivo);
+                            }
+                        }
+
+                        if (imagenes.Count > 0)
+                        {
+                            lblInfo.Text = "Imagenes cargadas correctamente!";
+                        }
+                        else
+                        {
+                            lblInfo.Text = "No se encontraron imagenes!";
+                            pictureBox1.Image = null;
                         }
                     }
-
-                    if (imagenes.Count>0)
-                    {
-                        lblInfo.Text = "Imagenes cargadas correctamente!";
-                    } else
-                    {
-                        lblInfo.Text = "No se encontraron imagenes!";
-                    }
                 }
+            } else
+            {
+                lblInfo.Text = "No se permite cargar imagenes \ncon pause habilitado!";
             }
-
-
+           
         }
 
         public void visualizarImagenes()
         {
+
 
             if (imagenes.Count != 0)
             {
