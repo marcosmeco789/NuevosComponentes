@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Ejercicio4
 {
-    public partial class DibujoAhorcado : Control
+    public partial class DibujoAhorcado : Control//TODO uso de goto case . Revisar valor anterior para lanzar evento.
     {
         public DibujoAhorcado()
         {
@@ -61,72 +61,56 @@ namespace Ejercicio4
 
                 case 2: // cuello
                     BaseAhorcadoEnEscala(e, escalaX, escalaY);
-                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    using (Pen lapiz = new Pen(Color.Red, 3))
                     {
-                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
                         lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
+                        goto case 1;
                     }
-                    break;
 
                 case 3: // torso
                     BaseAhorcadoEnEscala(e, escalaX, escalaY);
-                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    using (Pen lapiz = new Pen(Color.Red, 3)) 
                     {
-                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
-                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
                         lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
+                        goto case 2;
                     }
-                    break;
+                  
 
                 case 4: // brazo izq
                     BaseAhorcadoEnEscala(e, escalaX, escalaY);
-                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    using (Pen lapiz = new Pen(Color.Red, 3)) 
                     {
-                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
-                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
-                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
                         lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
+                        goto case 3;
                     }
-                    break;
+                  
 
                 case 5: // brazo derecho
                     BaseAhorcadoEnEscala(e, escalaX, escalaY);
-                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    using (Pen lapiz = new Pen(Color.Red, 3)) 
                     {
-                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
-                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
-                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
-                        lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
                         lineaEnEscala(e, lapiz, 149, 100, 172, 120, escalaX, escalaY); // brazo derecho
+                        goto case 4;
                     }
-                    break;
+                  
 
                 case 6: // pierna izq
                     BaseAhorcadoEnEscala(e, escalaX, escalaY);
-                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    using (Pen lapiz = new Pen(Color.Red, 3)) 
                     {
-                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
-                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
-                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
-                        lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
-                        lineaEnEscala(e, lapiz, 149, 100, 172, 120, escalaX, escalaY); // brazo derecho
                         lineaEnEscala(e, lapiz, 149, 150, 124, 180, escalaX, escalaY); // pierna izq
+                        goto case 5;
                     }
-                    break;
+                   
 
                 case 7: // pierna derecha
                     BaseAhorcadoEnEscala(e, escalaX, escalaY);
-                    using (Pen lapiz = new Pen(Color.Red, 3)) // Crea un Pen rojo con un grosor de 3
+                    using (Pen lapiz = new Pen(Color.Red, 3)) 
                     {
-                        circuloEnEscala(e, lapiz, 132, 50, 35, 35, escalaX, escalaY); // cabeza
-                        lineaEnEscala(e, lapiz, 149, 85, 149, 100, escalaX, escalaY); // cuello
-                        lineaEnEscala(e, lapiz, 149, 100, 149, 150, escalaX, escalaY); // torso
-                        lineaEnEscala(e, lapiz, 149, 100, 125, 120, escalaX, escalaY); // brazo izq
-                        lineaEnEscala(e, lapiz, 149, 100, 172, 120, escalaX, escalaY); // brazo derecho
-                        lineaEnEscala(e, lapiz, 149, 150, 124, 180, escalaX, escalaY); // pierna izq
                         lineaEnEscala(e, lapiz, 149, 150, 173, 180, escalaX, escalaY); // pierna derecha
+                        goto case 6;
                     }
-                    break;
+                    
 
                 default:
                     break;
@@ -145,9 +129,13 @@ namespace Ejercicio4
             {
                 if (value >= 0 && value <= 7)
                 {
-                    errores = value;
                     this.Refresh();
-                    OnCambiaError(EventArgs.Empty);
+                    if (errores != value)
+                    {
+                        OnCambiaError(EventArgs.Empty);
+                    }
+                    errores = value;
+                    
                     if (errores == 7)
                     {
                         OnAhorcado(EventArgs.Empty);
