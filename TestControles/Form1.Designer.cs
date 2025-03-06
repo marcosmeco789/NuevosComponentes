@@ -36,6 +36,7 @@ namespace TestControles
             this.labelTextBox1 = new NuevosComponentes.LabelTextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.dibujoAhorcado1 = new Ejercicio4.DibujoAhorcado();
+            this.validateTextBox1 = new Ej5.ValidateTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -99,7 +100,7 @@ namespace TestControles
             // dibujoAhorcado1
             // 
             this.dibujoAhorcado1.Errores = 0;
-            this.dibujoAhorcado1.Location = new System.Drawing.Point(333, 149);
+            this.dibujoAhorcado1.Location = new System.Drawing.Point(457, 119);
             this.dibujoAhorcado1.Name = "dibujoAhorcado1";
             this.dibujoAhorcado1.Size = new System.Drawing.Size(194, 202);
             this.dibujoAhorcado1.TabIndex = 2;
@@ -107,11 +108,23 @@ namespace TestControles
             this.dibujoAhorcado1.CambiaError += new System.EventHandler(this.dibujoAhorcado1_CambiaError);
             this.dibujoAhorcado1.Ahorcado += new System.EventHandler(this.dibujoAhorcado1_Ahorcado);
             // 
+            // validateTextBox1
+            // 
+            this.validateTextBox1.Location = new System.Drawing.Point(142, 319);
+            this.validateTextBox1.Name = "validateTextBox1";
+            this.validateTextBox1.Size = new System.Drawing.Size(216, 40);
+            this.validateTextBox1.TabIndex = 8;
+            this.validateTextBox1.Tipo = Ej5.ValidateTextBox.eTipo.Numerico;
+            this.validateTextBox1.txtMultiline = false;
+            this.validateTextBox1.TxtText = "";
+            this.validateTextBox1.TxtChanged += new System.EventHandler(this.validateTextBox1_TxtTextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.validateTextBox1);
             this.Controls.Add(this.dibujoAhorcado1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.etiquetaAviso1);
@@ -132,6 +145,7 @@ namespace TestControles
         private NuevosComponentes.EtiquetaAviso etiquetaAviso1;
         private System.Windows.Forms.Button button3;
         private Ejercicio4.DibujoAhorcado dibujoAhorcado1;
+        private Ej5.ValidateTextBox validateTextBox1;
     }
 }
 

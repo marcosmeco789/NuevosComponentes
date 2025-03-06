@@ -11,12 +11,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ej5
 {
-    public partial class ValidateTextBox: UserControl
+    public partial class ValidateTextBox : UserControl
     {
         public ValidateTextBox()
         {
             InitializeComponent();
             IniciarTextBox();
+            
         }
 
         private void IniciarTextBox()
@@ -26,7 +27,7 @@ namespace Ej5
             txt.Width = this.Width - 20;
 
         }
-
+        
 
         [Category("Appearance")]
         [Description("blabla")]
@@ -84,12 +85,96 @@ namespace Ej5
         {
             base.OnPaint(e);
             IniciarTextBox();
-            using (Pen lapiz = new Pen(Color.Red))
+            string cadena = txt.Text.Trim();
+            char[] enteros = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] cadenaArray = cadena.ToCharArray();
+            bool error = false;
+            Color color;
+
+            if (tipo == eTipo.Numerico)
+            {
+                if (cadena.Length == 0)
+                {
+                    error = true;
+                }
+                else
+                {
+                    foreach (char numero in cadenaArray)
+                    {
+                        bool esNumero = false;
+                        foreach (char numerosComprobar in enteros)
+                        {
+                            if (numero == numerosComprobar)
+                            {
+                                esNumero = true;
+                                break;
+                            }
+                        }
+                        if (!esNumero)
+                        {
+                            error = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (cadena.Length == 0)
+                {
+                    error = true;
+                }
+                else
+                {
+                    foreach (char caracter in cadenaArray)
+                    {
+                        if (!Char.IsLetter(caracter))
+                        {
+                            if (caracter != ' ')
+                            {
+                                error = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            if (error)
+            {
+                color = Color.Red;
+            }
+            else
+            {
+                color = Color.Green;
+            }
+
+            using (Pen lapiz = new Pen(color))
             {
                 Rectangle r = new Rectangle(5, 5, this.Width - 10, this.Height - 10);
                 e.Graphics.DrawRectangle(lapiz, r);
             }
         }
+
+
+        [Category("test")]
+        [Description("Se lanza cuando cambia el texto del TextBox interno")]
+        public event EventHandler TxtChanged;
+
+        protected virtual void OnTxtChanged( EventArgs e)
+        {
+            TxtChanged?.Invoke(this, e);
+        }
+
+
+
+        private void txt_TextChanged(object sender, EventArgs e)
+        {
+            this.OnTxtChanged(e);
+            this.Invalidate();
+        }
+
 
 
     }

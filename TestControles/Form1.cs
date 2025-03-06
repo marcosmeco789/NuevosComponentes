@@ -113,6 +113,9 @@ namespace TestControles
             dibujoAhorcado1.Errores += 1;
         }
 
-
+        private void validateTextBox1_TxtTextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("lanzado!");
+        }
     }
 }

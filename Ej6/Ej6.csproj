@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F2D84CE-E5E9-4158-BB0A-A192A2D0044C}</ProjectGuid>
+    <ProjectGuid>{ED4DEE2C-6467-4EA4-B6B6-26FFCA15CA52}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Ej5</RootNamespace>
-    <AssemblyName>Ej5</AssemblyName>
+    <RootNamespace>Ej6</RootNamespace>
+    <AssemblyName>Ej6</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,19 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ValidateTextBox.cs">
+    <Compile Include="GraficoDeBarras.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ValidateTextBox.Designer.cs">
-      <DependentUpon>ValidateTextBox.cs</DependentUpon>
+    <Compile Include="GraficoDeBarras.Designer.cs">
+      <DependentUpon>GraficoDeBarras.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ValidateTextBox.resx">
-      <DependentUpon>ValidateTextBox.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

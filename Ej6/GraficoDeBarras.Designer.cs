@@ -1,6 +1,6 @@
-﻿namespace Ej5
+﻿namespace Ej6
 {
-    partial class ValidateTextBox
+    partial class GraficoDeBarras
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,31 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
-            // 
-            // txt
-            // 
-            this.txt.Location = new System.Drawing.Point(10, 10);
-            this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(100, 20);
-            this.txt.TabIndex = 0;
-            this.txt.TextChanged += new System.EventHandler(this.txt_TextChanged);
-            // 
-            // ValidateTextBox
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txt);
-            this.Name = "ValidateTextBox";
-            this.Size = new System.Drawing.Size(124, 46);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt;
     }
 }

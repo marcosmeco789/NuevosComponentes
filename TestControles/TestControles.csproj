@@ -81,6 +81,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ej5\Ej5.csproj">
+      <Project>{1F2D84CE-E5E9-4158-BB0A-A192A2D0044C}</Project>
+      <Name>Ej5</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ejercicio4\Ejercicio4.csproj">
       <Project>{DF3115F8-90A2-4EB9-9F13-4E6F028F3925}</Project>
       <Name>Ejercicio4</Name>
