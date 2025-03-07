@@ -37,6 +37,7 @@ namespace TestControles
             this.button3 = new System.Windows.Forms.Button();
             this.dibujoAhorcado1 = new Ejercicio4.DibujoAhorcado();
             this.validateTextBox1 = new Ej5.ValidateTextBox();
+            this.graficoDeBarras1 = new Ej6.GraficoDeBarras();
             this.SuspendLayout();
             // 
             // button1
@@ -110,20 +111,30 @@ namespace TestControles
             // 
             // validateTextBox1
             // 
-            this.validateTextBox1.Location = new System.Drawing.Point(142, 319);
+            this.validateTextBox1.Location = new System.Drawing.Point(285, 128);
             this.validateTextBox1.Name = "validateTextBox1";
             this.validateTextBox1.Size = new System.Drawing.Size(216, 40);
             this.validateTextBox1.TabIndex = 8;
             this.validateTextBox1.Tipo = Ej5.ValidateTextBox.eTipo.Numerico;
-            this.validateTextBox1.txtMultiline = false;
+            this.validateTextBox1.txtMultiline = true;
             this.validateTextBox1.TxtText = "";
             this.validateTextBox1.TxtChanged += new System.EventHandler(this.validateTextBox1_TxtTextChanged);
+            // 
+            // graficoDeBarras1
+            // 
+            this.graficoDeBarras1.Grafico = Ej6.GraficoDeBarras.eGrafico.LINEA;
+            this.graficoDeBarras1.Location = new System.Drawing.Point(87, 225);
+            this.graficoDeBarras1.Name = "graficoDeBarras1";
+            this.graficoDeBarras1.Size = new System.Drawing.Size(267, 163);
+            this.graficoDeBarras1.TabIndex = 9;
+            this.graficoDeBarras1.TamañoEjes = Ej6.GraficoDeBarras.EtamañoEjes.Manual;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.graficoDeBarras1);
             this.Controls.Add(this.validateTextBox1);
             this.Controls.Add(this.dibujoAhorcado1);
             this.Controls.Add(this.button3);
@@ -146,6 +157,7 @@ namespace TestControles
         private System.Windows.Forms.Button button3;
         private Ejercicio4.DibujoAhorcado dibujoAhorcado1;
         private Ej5.ValidateTextBox validateTextBox1;
+        private Ej6.GraficoDeBarras graficoDeBarras1;
     }
 }
 
