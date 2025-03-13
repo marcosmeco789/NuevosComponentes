@@ -113,19 +113,19 @@ namespace TestControles
             // 
             this.validateTextBox1.Location = new System.Drawing.Point(285, 128);
             this.validateTextBox1.Name = "validateTextBox1";
-            this.validateTextBox1.Size = new System.Drawing.Size(216, 40);
+            this.validateTextBox1.Size = new System.Drawing.Size(128, 40);
             this.validateTextBox1.TabIndex = 8;
             this.validateTextBox1.Tipo = Ej5.ValidateTextBox.eTipo.Numerico;
             this.validateTextBox1.txtMultiline = true;
-            this.validateTextBox1.TxtText = "";
+            this.validateTextBox1.TxtText = "12";
             this.validateTextBox1.TxtChanged += new System.EventHandler(this.validateTextBox1_TxtTextChanged);
             // 
             // graficoDeBarras1
             // 
             this.graficoDeBarras1.Grafico = Ej6.GraficoDeBarras.eGrafico.LINEA;
-            this.graficoDeBarras1.Location = new System.Drawing.Point(87, 225);
+            this.graficoDeBarras1.Location = new System.Drawing.Point(140, 87);
             this.graficoDeBarras1.Name = "graficoDeBarras1";
-            this.graficoDeBarras1.Size = new System.Drawing.Size(267, 163);
+            this.graficoDeBarras1.Size = new System.Drawing.Size(389, 313);
             this.graficoDeBarras1.TabIndex = 9;
             this.graficoDeBarras1.TamañoEjes = Ej6.GraficoDeBarras.EtamañoEjes.Manual;
             // 

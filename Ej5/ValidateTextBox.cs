@@ -73,6 +73,7 @@ namespace Ej5
             set
             {
                 tipo = value;
+                this.Refresh();
             }
             get
             {

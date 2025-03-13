@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Ej6
 {
-    public partial class GraficoDeBarras : UserControl
+    public partial class GraficoDeBarras : UserControl//Dibujar ejes. Tamaños relativos. Revisar rojo en automatico. Propiedades de texto de ejes y colección . Revisar en general.
     {
         List<float> valores = new List<float> {23, 3, 5, 7, 10, 15, 7, 11 };
 
